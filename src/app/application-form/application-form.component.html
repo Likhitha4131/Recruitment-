@@ -1,0 +1,22 @@
+<!-- application-form.component.html -->
+<h2>Application for the {{jobtitle}}</h2>
+<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="candidateName">Candidate Name:</label>
+    <input type="text" id="candidateName" formControlName="candidateName" required>
+  </div>
+  <div>
+    <label for="experience">Experience:</label>
+    <select id="experience" formControlName="experience" required>
+      <option *ngFor="let option of experienceOptions" [value]="option">{{ option }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="additionalInfo">Additional Info:</label>
+    <textarea id="additionalInfo" formControlName="additionalInfo"></textarea>
+  </div>
+  <button type="submit" [disabled]="!applicationForm.valid">Submit Application</button>
+  
+</form>
+
+
