@@ -6,7 +6,7 @@
     <input type="text" id="candidateName" formControlName="candidateName" required>
   </div>
   <div>
-    <label for="experience">Experience:</label>
+    <label for="experience">Experience In years:</label>
     <select id="experience" formControlName="experience" required>
       <option *ngFor="let option of experienceOptions" [value]="option">{{ option }}</option>
     </select>

@@ -12,6 +12,7 @@ import { DataService } from '../services/data.service';
 
 export class ApplicationFormComponent implements OnInit{
   applicationForm: FormGroup;
+  job:any;
   jobtitle:any;
   constructor(private formBuilder: FormBuilder, private dataService: DataService,private route: ActivatedRoute, private router: Router,) {
     this.applicationForm = this.formBuilder.group({
@@ -20,11 +21,11 @@ export class ApplicationFormComponent implements OnInit{
       additionalInfo: ['']
     });
   }
-  experienceOptions: string[] = ['1 year', '2 years', '3 years', '4 years', '5+ years'];
+  experienceOptions: number[] = [1,2,3,4,5];
   ngOnInit(): void {
-   
-    const navigatedFromJobs = this.route.snapshot.paramMap.has('jobTitle');
-    this.jobtitle=this.route.snapshot.paramMap.get('jobTitle');
+   this.job=this.dataService.getcurrentJob();
+    const navigatedFromJobs = this.route.snapshot.paramMap.has('jobId');
+    this.jobtitle=this.job.title;
     if (!navigatedFromJobs) {
       this.router.navigate(['/jobs']);
     }
@@ -32,10 +33,8 @@ export class ApplicationFormComponent implements OnInit{
   }
   onSubmit() {
     if (this.applicationForm.valid) {
-      this.dataService.applyForJob(this.applicationForm.value).subscribe(response => {
-        console.log(response);
-      });
-      this.dataService.addingAppliedCandidates(this.applicationForm.value,this.jobtitle).subscribe(response=>{
+      
+      this.dataService.addingAppliedCandidates(this.applicationForm.value,this.job).subscribe(response=>{
         console.log(response);
       });
       this.applicationForm.reset();

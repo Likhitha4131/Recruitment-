@@ -1,5 +1,21 @@
 <!-- candidate-list.component.html -->
-<h2>Candidate List</h2>
-<ul>
-  <li *ngFor="let candidate of candidates">{{ candidate.name }} - {{ candidate.experience }}</li>
-</ul>
+
+<h2>Candidates Applied for {{jobtitle}}</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Experience</th>
+      <th>Intrest in the job</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidate of candidates">
+      <td>{{ candidate.name }}</td>
+      <td>{{ candidate.experience }}</td>
+      <td>{{candidate.ExpressedIntrest}}</td>
+    </tr>
+  </tbody>
+</table>
+

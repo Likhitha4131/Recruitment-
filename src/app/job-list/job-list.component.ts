@@ -1,6 +1,6 @@
 // job-list.component.ts
 import { Component, OnInit } from '@angular/core';
-
+//import { JobService } from './job.service';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -17,17 +17,23 @@ export class JobListComponent implements OnInit {
   constructor(private dataService: DataService,private router: Router) { }
 
   ngOnInit(): void {
-    this.dataService.getJobs().subscribe(data => this.jobs = data);
-    this.filteredJobs = this.jobs;
+    this.getJobs();
+   
+  }
+  getJobs() {
+    this.dataService.getJobs().subscribe((data) => {
+      this.jobs = data;
+      this.filteredJobs = this.jobs;
+    });
   }
   applyForJob(job: any): void {
-    this.router.navigate(['/apply', { jobTitle: job.title }]);
+    this.router.navigate(['/apply', { jobId: job.id }]);
     console.log(`Applying for job: ${job.title}`);
-    
+    this.dataService.setJobData(job);
   }
   candidatesApplied(job : any):void{
-    this.router.navigate(['/candidates', { jobTitle: job.title }]);
-
+    this.router.navigate(['/candidates', { jobId: job.id }]);
+    this.dataService.setJobData(job);
   }
   filterJobs() {
     this.filteredJobs = this.jobs.filter(job =>

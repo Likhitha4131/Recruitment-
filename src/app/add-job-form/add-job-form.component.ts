@@ -12,12 +12,14 @@ export class AddJobFormComponent implements OnInit {
   applicationForm: FormGroup;
   jobtitle:any;
   skills: string = '';
+  experienceOptions: number[] = [1,2,3,4,5];
   constructor(private formBuilder: FormBuilder, private dataService: DataService,private route: ActivatedRoute, private router: Router,) {
     this.applicationForm = this.formBuilder.group({
       title: ['', Validators.required],
       skills:['',Validators.required],
       company:['',Validators.required],
-      additionalInfo: ['']
+      experience:['',Validators.required],
+      additionalInfo: ['',Validators.required]
     });
     
   }
@@ -26,12 +28,7 @@ export class AddJobFormComponent implements OnInit {
   }
   onSubmit() {
     if (this.applicationForm.valid) {
-      this.dataService.addJob(this.applicationForm.value).subscribe(response => {
-        console.log(response);
-        // Reset the form after submission
-
-      });
-      this.dataService.addjob(this.applicationForm.value).subscribe(response=>{
+      this.dataService.addJob(this.applicationForm.value).subscribe(response=>{
         console.log(response);
       });
       this.applicationForm.reset();

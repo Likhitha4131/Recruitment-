@@ -10,18 +10,18 @@ import { DataService } from '../services/data.service';
 })
 export class CandidateListComponent implements OnInit {
   candidates: any[] = [];
-  jobtitle:any;
+  jobId:any;
   constructor(private dataService: DataService,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    const navigatedFromJobs = this.route.snapshot.paramMap.has('jobTitle');
-    this.jobtitle=this.route.snapshot.paramMap.get('jobTitle');
+    const navigatedFromJobs = this.route.snapshot.paramMap.has('jobId');
+    this.jobId=this.route.snapshot.paramMap.get('jobId');
     if (!navigatedFromJobs) {
       // If not navigated from "Jobs", navigate back to "Jobs" or any other route
       this.router.navigate(['/jobs']);
      
     }
-    this.dataService.getCandidates(this.jobtitle).subscribe(data => this.candidates = data);
+    this.dataService.getCandidates(this.jobId).subscribe(data => this.candidates = data);
   }
 }
 

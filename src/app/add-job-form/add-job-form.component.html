@@ -1,23 +1,26 @@
 <p>add-job-form works!</p>
-<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="title">Title: </label>
-      <input type="text" id="title" formControlName="title" required>
-    </div>
-    <div>
-        <label for="company">Company: </label>
-        <input type="text" id="company" formControlName="company" required>
-    </div> 
-    
-        <div>
-            <label for="skills">Enter required skills for the job:</label>
-            <textarea id="skills" formControlName="skills" placeholder="Enter each skill on a new line"></textarea>
-          </div>
-
-    <div>
-      <label for="additionalInfo">Additional Info:</label>
-      <textarea id="additionalInfo" formControlName="additionalInfo"></textarea>
-    </div>
-    <button type="submit" [disabled]="!applicationForm.valid">Submit Application</button>
-    
-  </form>
+<form [formGroup]="applicationForm" (ngSubmit)="onSubmit()" class="application-form">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" id="title" formControlName="title" required>
+  </div>
+  <div class="form-group">
+    <label for="company">Company:</label>
+    <input type="text" id="company" formControlName="company" required>
+  </div>
+  <div class="form-group">
+    <label for="experience">Experience Required:</label>
+    <select id="experience" formControlName="experience" required>
+      <option *ngFor="let option of experienceOptions" [value]="option">{{ option }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="skills">Enter required skills for the job:</label>
+    <textarea id="skills" formControlName="skills" placeholder="Enter each skill on a new line"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="additionalInfo">Description:</label>
+    <textarea id="additionalInfo" formControlName="additionalInfo"></textarea>
+  </div>
+  <button type="submit" [disabled]="!applicationForm.valid" class="submit-btn">Submit Application</button>
+</form>

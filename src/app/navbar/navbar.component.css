@@ -1,8 +1,8 @@
 nav {
     display: flex;
-    justify-content: flex-end; /* Align items to the right */
-    background-color: #333; /* Choose your desired background color */
-    padding: 10px; /* Adjust padding as needed */
+    justify-content: flex-end;  
+    background-color: #333; 
+    padding: 10px;
   }
   
   ul {
@@ -13,18 +13,18 @@ nav {
   
   li {
     display: inline-block;
-    margin-right: 15px; /* Adjust spacing between links */
+    margin-right: 15px; 
   }
   
   a {
     text-decoration: none;
-    color: white; /* Choose your desired text color */
+    color: white;
     font-weight: bold;
     font-size: 16px;
     transition: color 0.3s ease-in-out;
   }
   
   a:hover {
-    color: #FFD700; /* Change color on hover, adjust as needed */
+    color: #FFD700; 
   }
   
