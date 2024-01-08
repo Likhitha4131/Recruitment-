@@ -15,7 +15,7 @@
   <div *ngFor="let job of filteredJobs" class="job-card">
     <div class="card-header">{{ job.title }} </div>
     <div class="card-company">Company: {{job.companyName}}</div>
-    <div class="card-company">Experience Required: {{job.expirenceRequired}}</div>
+    <div class="card-company">Experience Required: {{job.expirenceRequired}} years</div>
     <div class="card-skills">Skills: {{ job.skills.join(', ') }}</div>
     <div class="card-buttons">
       <button (click)="applyForJob(job)">Apply</button>

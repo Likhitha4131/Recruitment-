@@ -13,8 +13,8 @@ export class DataService {
 
 
   private candidate = [
-    { name: 'John Doe', experience: '2 years',jobappiled:['Front-end Developer'], ExpressedIntrest:'' },
-    { name: 'Jane Doe', experience: '3 years' ,jobappiled:['Back-end Developer'], ExpressedIntrest:''},
+    { name: 'John Doe', experience: 2,jobappiled:['Front-end Developer'], ExpressedIntrest:'' },
+    { name: 'Jane Doe', experience: 3 ,jobappiled:['Back-end Developer'], ExpressedIntrest:''},
   ];
 
   private jobs = [
@@ -33,6 +33,9 @@ export class DataService {
   }
   getJobs(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/Job`);
+  }
+  gc(jobId){
+    return this.candidate;
   }
   getCandidates(jobId): Observable<any> {
     const url = `${this.apiUrl}/Candidate/${jobId}`;
